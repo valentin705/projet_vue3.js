@@ -1,18 +1,16 @@
 <template>
-  <div class="home">
-    <main>
-      <h1> Products management</h1>
-      <section>
-        <div class="thead">
-          <p>Product name</p>
-          <p>Category</p>
-          <p>Price</p>
-          <p>Price(VAT)</p>
-        </div>
-        <ShowProducts></ShowProducts>
-      </section>
-    </main>
-  </div>
+  <main class="home">
+    <h1 class="home__title"> Products management</h1>
+    <section class="section">
+      <div class="thead">
+        <p class="thead__prod-name">Product name</p>
+        <p class="thead__category">Category</p>
+        <p class="thead__price">Price</p>
+        <p class="thead__price-vat">Price(VAT)</p>
+      </div>
+      <ShowProducts />
+    </section>
+  </main>
 </template>
 
 <script>
@@ -20,12 +18,6 @@ import ShowProducts from '@/components/home/ShowProducts.vue';
 
 export default {
   name: 'HomeView',
-
-  data() {
-    return {
-      products: []
-    }
-  },
 
   components: {
     ShowProducts,
@@ -44,52 +36,66 @@ export default {
 }
 </script>
 
-<style lang="scss">
-$primary-color: #804BF1;
-$write-color: #F2F2F2;
+<style lang="scss" scoped>
+@import '@/assets/_variablesColor.scss';
+@import '@/assets/_variablesTypographie.scss';
 
-h1 {
+.home {
+  margin-bottom: 2rem;
+}
+.home__title {
   display: flex;
   justify-content: center;
-  font-size: 20px;
+  font-size: $font-size-title-m;
   font-weight: bold;
   color: $primary-color;
-  margin: 20px;
-}
-
-table {
-  border-collapse: collapse;
+  margin: 3rem;
 }
 
 .thead {
   display: flex;
-  font-size: 12px;
+  font-size: $font-size-m;
   font-weight: bold;
-  color: $write-color;
-  margin: 20px;
-  height: 60px;
+  color: $write-color-w;
+  margin: 1rem;
+  padding: 1.2rem;
   background-color: $primary-color;
-  border-radius: 5%;
+  border-radius: 15px;
 
+  &__prod-name {
+    display: flex;
+    width: 35%;
+    justify-content: center;
+  }
+
+  &__category {
+    display: flex;
+    justify-content: center;
+    width: 25%;
+  }
+
+  &__price,
+  &__price-vat {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+  }
 }
 
-.thead p:first-child {
-  white-space: nowrap;
-}
+@media screen and (min-width: 768px) {
+  .home {
+    align-items: center;
+    margin: auto;
+    width: 80%;
 
-.thead p:nth-of-type(3){
-  justify-content: end;
-}
+    &__title {
+      font-size: $font-size-title-d;
+    }
+  }
+  .thead {
+    font-size: $font-size-d;
+  }
 
-.thead p {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin: 10px;
 }
-
-p:first-child {
-  min-width: 30%;
-  overflow: hidden;
-}
+  
 </style>

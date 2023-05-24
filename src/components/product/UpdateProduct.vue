@@ -1,5 +1,5 @@
 <template>
-    <button type="submit" @click="addProductToLocalStorage(product)">Update product</button>
+    <button class="btn-update-price btn-update-price--color" type="submit" @click="addProductToLocalStorage(product)">Update product</button>
 </template>
 
 <script>
@@ -32,27 +32,24 @@ export default {
 
 </script>
 
-<style lang="scss">
-$primary-color: #804BF1;
-$write-color: #F2F2F2;
+<style lang="scss" scoped>
+  @import '@/assets/_variablesColor.scss';
+  @import '@/assets/_variablesTypographie.scss';
 
-.section-product-view button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.btn-update-price {
   height: 50px;
   border: none;
   border-radius: 5%;
   background-color: $primary-color;
   color: white;
-  font-size: 16px;
+  font-size: $font-size-m;
   font-weight: bold;
   cursor: pointer;
-  margin: 50px auto 50px auto;
+  margin: 4rem;
   padding: 10px 20px;
 }
 
-.section-product-view button:hover {
+.btn-update-price--color:hover {
   background-color: #8652f46c;
 }
 </style>

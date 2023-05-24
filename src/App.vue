@@ -1,13 +1,12 @@
 <template>
-  <div id="app">
-    <NavBarMobile></NavBarMobile>
-    
+  <div class="content">
+    <NavBarMobile class="navBar"></NavBarMobile>
   </div>
 </template>
 
 <script>
 
-import NavBarMobile from './components/home/NavBarMobile.vue'
+import NavBarMobile from './components/NavBarMobile.vue'
 
 
 export default {
@@ -21,9 +20,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/_variablesTypographie.scss";
 
 #app {
-  font-family: Avenir, Arial, sans-serif;
+  font-family: $font-family;
   color: white;
 }
 
@@ -32,5 +32,18 @@ export default {
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+}
+
+.content {
+  min-width: 350px;
+  margin: 0;
+  overflow-x: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    display: flex;
+    padding-bottom: 0;
+  }
 }
 </style>

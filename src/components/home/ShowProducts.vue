@@ -1,16 +1,16 @@
 <template>
     <div class="tbody" v-for="product in displayedProducts" :key="product.id" @click="selectProduct(product.id)">
-        <p>{{ product.title }}</p>
-        <div class="category-color" :data-category="product.category">
-            <p>{{ product.category }}</p>
+        <p class="tbody__title">{{ product.title }}</p>
+        <div class="category-color tbody__category-bloc" :data-category="product.category">
+            <p class="tbody__category">{{ product.category }}</p>
         </div>
-        <p>{{ product.price.toFixed(2) }}€</p>
-        <p>{{ (product.price * 1.2).toFixed(2) }}€</p>
+        <p class="tbody__price">{{ product.price.toFixed(2) }}€</p>
+        <p class="tbody__price-vat">{{ (product.price * 1.2).toFixed(2) }}€</p>
     </div>
     <div class="pagination-bloc">
-    <Paginate v-model="page" :page-count="calculatePageCount" :page-range="3" :click-handler="clickCallback"
-        :prev-text="'<<'" :next-text="'>>'" :container-class="'pagination'" :page-class="'page-item'">
-    </Paginate>
+        <Paginate v-model="page" :page-count="calculatePageCount" :page-range="3" :click-handler="clickCallback"
+            :prev-text="'<<'" :next-text="'>>'" :container-class="'pagination'" :page-class="'page-item'">
+        </Paginate>
     </div>
 </template>
 
@@ -58,49 +58,55 @@ export default {
 </script>
 
 <style lang="scss">
-$primary-color: #804BF1;
-$write-color: #858080;
+@import '@/assets/_variablesColor.scss';
+@import '@/assets/_styleCategory.scss';
+@import '@/assets/_variablesTypographie.scss';
 
 .tbody {
     display: flex;
-    flex-direction: row;
-    font-size: 12px;
+    font-size: $font-size-m;
     font-weight: bold;
-    color: $write-color;
-    margin: 20px;
-    height: 60px;
+    color: $write-color-g;
+    margin: 1rem;
+    padding: 1.2rem;
     box-sizing: border-box;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5%;
+    border-radius: 15px;
     cursor: pointer;
     align-items: center;
-}
 
-.tbody p:first-child {
-    white-space: nowrap;
-    min-width: 30%;
-    overflow: hidden;
-}
+    &__title {
+        display: flex;
+        width: 35%;
+        justify-content: start;
+    }
 
-.tbody p:nth-child(3), .tbody p:nth-child(4) {
-    justify-content: end;
-    margin: 10px;
-}
+    &__category-bloc {
+        align-items: center;
+        height: fit-content;
+        width: 25%;
+        align-content: center;
+        text-align: center;
+        justify-content: center;
+        padding: 0.5rem;
+        margin: 0 1rem;
+    }
 
-.tbody p {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin: 10px;
+    &__price,
+    &__price-vat {
+        display: flex;
+        justify-content: center;
+        width: 20%;
+    }
 }
 
 .pagination-bloc {
     display: flex;
     justify-content: center;
-    margin: 50px;
+    margin: 3rem;
 }
+
 .pagination {
-    // position: relative;
     display: flex;
 }
 
@@ -110,41 +116,6 @@ $write-color: #858080;
     border: 1px solid $primary-color;
     cursor: pointer;
     background-color: $primary-color;
-}
-
-.page-item:hover {
-    background-color: $primary-color;
-}
-
-.page-item.active {
-    background-color: $primary-color;
-}
-
-.category-color[data-category="men's clothing"] {
-    background-color: orange;
-    color: white;
-    border-radius: 15px;
-    display: flex;
-}
-
-.category-color[data-category="jewelery"] {
-    background-color: green;
-    color: white;
-    border-radius: 15px;
-    display: flex;
-}
-
-.category-color[data-category="electronics"] {
-    background-color: blue;
-    color: white;
-    border-radius: 15px;
-    display: flex;
-}
-
-.category-color[data-category="women's clothing"] {
-    background-color: red;
-    color: white;
-    border-radius: 15px;
-    display: flex;
+   
 }
 </style>

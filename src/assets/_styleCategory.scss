@@ -1,0 +1,38 @@
+.category-color[data-category="men's clothing"] {
+    background-color: orange;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    width: fit-content;
+}
+
+.category-color[data-category="jewelery"] {
+    background-color: green;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    width: fit-content;
+}
+
+.category-color[data-category="electronics"] {
+    background-color: blue;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    width: fit-content;
+}
+
+.category-color[data-category="women's clothing"] {
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    width: fit-content;
+}
+
+@media screen and (min-width: 900px) {
+    .category-color {
+        white-space: nowrap;
+    }
+}
+
